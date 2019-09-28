@@ -15,7 +15,39 @@ func add(args ...float64) float64 {
 	return total
 }
 
+func first() {
+	fmt.Println("1st")
+}
+
+func second() {
+	fmt.Println("2nd")
+}
+
 func main() {
 	testxs := []float64{98, 93, 77, 82, 83}
-	fmt.Println(average(testxs))
+
+	// basic function call
+	avg := average(testxs)
+	fmt.Println(avg)
+
+	// nested function declaration
+	x := 0
+	increment := func() int {
+		x++
+		return x
+	}
+	fmt.Println(increment())
+	fmt.Println(increment())
+
+	// defer - called when function completes
+	// usually useful for closing a file
+	defer second()
+	first()
+
+	// panic and recover
+	defer func() {
+		str := recover()
+		fmt.Println(str)
+	}()
+	panic("PANIC")
 }
