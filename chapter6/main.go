@@ -23,6 +23,10 @@ func second() {
 	fmt.Println("2nd")
 }
 
+func zero(xPtr *int) {
+	*xPtr = 5
+}
+
 func main() {
 	testxs := []float64{98, 93, 77, 82, 83}
 
@@ -38,6 +42,15 @@ func main() {
 	}
 	fmt.Println(increment())
 	fmt.Println(increment())
+
+	// pointers are sharp
+	lPtr := 15
+	zero(&lPtr)
+	fmt.Println("lPtr", lPtr)
+
+	mPtr := new(int)
+	zero(mPtr)
+	fmt.Println("mPtr", *mPtr)
 
 	// defer - called when function completes
 	// usually useful for closing a file
